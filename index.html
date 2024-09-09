@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Géneros en Alemán</title>
+    <link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Juego de Géneros en Alemán</h1>
+    </header>
+    <main>
+        <section>
+            <input type="file" id="fileInput" accept=".csv">
+            <div id="gameContainer" style="display:none;">
+                <p id="wordDisplay"></p>
+                <button class="button button-die" data-genre="die">Die</button>
+                <button class="button button-der" data-genre="der">Der</button>
+                <button class="button button-das" data-genre="das">Das</button>
+                <p id="feedback"></p>
+            </div>
+        </section>    
+    </main>
+    <script src="./scripts.js"></script>
+</body>
+</html>
