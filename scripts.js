@@ -1,6 +1,8 @@
 let words = [];
 let currentWord = {};
+let racha = 0;
 
+document.querySelector('.gameContainer').style.display = 'none';
 document.getElementById('fileInput').addEventListener('change', handleFile);
 
 function handleFile(event) {
@@ -32,7 +34,7 @@ function parseCSV(text) {
 }
 
 function startGame() {
-    document.getElementById('gameContainer').style.display = 'block';
+    document.querySelector('.gameContainer').style.display = 'flex';   
     loadNextWord();
 }
 
@@ -52,6 +54,7 @@ document.querySelectorAll('.button').forEach(button => {
 function checkAnswer(selectedGenre) {
     if (selectedGenre === currentWord.genre) {
         document.getElementById('feedback').textContent = '¡Correcto!';
+        //document.getElementById('racha').textContent = ++racha
     } else {
         document.getElementById('feedback').textContent = 'Incorrecto, intenta de nuevo.';
     }
