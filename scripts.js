@@ -5,6 +5,14 @@ let racha = 0;
 document.querySelector('.gameContainer').style.display = 'none';
 document.getElementById('fileInput').addEventListener('change', handleFile);
 
+
+if(localStorage.getItem("Wörter")){
+    document.getElementById('btn-storage').addEventListener('click', startGame);
+}else{
+    document.getElementById('btn-storage').style.display = 'none';
+}
+
+
 function handleFile(event) {
     const file = event.target.files[0];
     if (file) {
@@ -12,6 +20,7 @@ function handleFile(event) {
         reader.onload = function(e) {
             const text = e.target.result;
             parseCSV(text);
+            localStorage.setItem("Wörter", JSON.stringify(words));
             startGame();
         };
         reader.readAsText(file);
@@ -31,10 +40,13 @@ function parseCSV(text) {
 
     // Filtrar palabras que tengan contenido válido
     words = words.filter(item => item.word);
+    return words;
 }
 
 function startGame() {
-    document.querySelector('.gameContainer').style.display = 'flex';   
+    document.querySelector('.gameContainer').style.display = 'flex';
+    document.querySelector('.gameMenu').style.display = 'none';
+    words = JSON.parse(localStorage.getItem("Wörter"))
     loadNextWord();
 }
 
@@ -52,11 +64,13 @@ document.querySelectorAll('.button').forEach(button => {
 });
 
 function checkAnswer(selectedGenre) {
+    racha = parseInt(document.getElementById('racha').textContent)
     if (selectedGenre === currentWord.genre) {
         document.getElementById('feedback').textContent = '¡Correcto!';
-        //document.getElementById('racha').textContent = ++racha
+        document.getElementById('racha').textContent = ++racha
     } else {
-        document.getElementById('feedback').textContent = 'Incorrecto, intenta de nuevo.';
+        document.getElementById('feedback').textContent = `Incorrecto, era ${currentWord.genre}.`;
+        document.getElementById('racha').textContent = 0
     }
-    setTimeout(loadNextWord, 1000);
+    setTimeout(loadNextWord, 1500);
 }

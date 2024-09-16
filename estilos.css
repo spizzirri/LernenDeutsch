@@ -2,10 +2,17 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 20px;
+    background-color: rgb(245, 238, 149);
 }
 
 .gameContainer {
     display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.gameMenu{
+    display: flex; 
     flex-direction: column;
     gap: 0.5em;
 }
