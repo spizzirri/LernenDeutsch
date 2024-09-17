@@ -47,6 +47,8 @@ function startGame() {
     document.querySelector('.gameContainer').style.display = 'flex';
     document.querySelector('.gameMenu').style.display = 'none';
     words = JSON.parse(localStorage.getItem("Wörter"))
+    document.querySelector("#palabras-totales").textContent = words.length;
+    document.querySelector("#palabras-faltantes").textContent = words.length;
     loadNextWord();
 }
 
@@ -68,9 +70,11 @@ function checkAnswer(selectedGenre) {
     if (selectedGenre === currentWord.genre) {
         document.getElementById('feedback').textContent = '¡Correcto!';
         document.getElementById('racha').textContent = ++racha
+        document.getElementById('aciertos').textContent = parseInt(document.getElementById('aciertos').textContent) + 1;
     } else {
         document.getElementById('feedback').textContent = `Incorrecto, era ${currentWord.genre}.`;
         document.getElementById('racha').textContent = 0
     }
+    document.querySelector("#palabras-faltantes").textContent = parseInt(document.getElementById('palabras-faltantes').textContent) - 1;
     setTimeout(loadNextWord, 1500);
 }
