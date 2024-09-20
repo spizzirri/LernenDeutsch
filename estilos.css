@@ -34,6 +34,14 @@ body {
     background-color: green;
 }
 
+#wordMeaning{
+    display: none;
+}
+
+#wordDisplay:hover ~ #wordMeaning{
+    display: inline;   
+}
+
 #feedback {
     font-weight: bold;
 }

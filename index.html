@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Géneros en Alemán</title>
+    <title>LernenDeutsch</title>
     <link rel="stylesheet" href="./estilos.css">
 </head>
 <body>
@@ -13,21 +13,33 @@
     </header>
     <main>
         <section>
-            <div class="gameMenu">
+            <article class="gameMenu">
                 <input type="file" id="fileInput" accept=".csv">
+                <button id="btn-online">Actualizar base (online)</button>
                 <button id="btn-storage">Usar base local</button>
-            </div>
-            <div class="gameContainer">
-                <div> Palabras totales / faltantes: <span id="palabras-totales">0</span> / <span id="palabras-faltantes">0</span> </div>
-                <div> Aciertos: <span id="aciertos">0</span> </div>
-                <div> Racha: <span id="racha">0</span> </div>
 
-                <p id="wordDisplay"></p>
+                <div>
+                    <label for="percentage">Porcentaje de palabras: </label>
+                    <input type="range" name="percentage" id="percentage" min="5" max="100" step="5" value="25" />
+                    <output for="percentage"></output>    
+                </div>
+                
+            </article>
+            <article class="gameContainer">
+                <p> 
+                    <strong>Palabras:</strong> <span id="palabras-totales">0</span>/<span id="palabras-faltantes">0</span>
+                    <strong>Aciertos:</strong> <span id="aciertos">0</span>
+                    <strong>Racha:</strong> <span id="racha">0</span>
+                </p>
+                <p>
+                    <span id="wordDisplay"></span> <span id="wordMeaning"></span>
+                </p>
+                
                 <button class="button button-die" data-genre="die">Die</button>
                 <button class="button button-der" data-genre="der">Der</button>
                 <button class="button button-das" data-genre="das">Das</button>
                 <p id="feedback"></p>
-            </div>
+            </article>
         </section>    
     </main>
     <script src="./scripts.js"></script>
