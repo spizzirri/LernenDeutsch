@@ -119,7 +119,7 @@ async function downloadCSV(){
 
     const corsProxy = 'https://cors-anywhere.herokuapp.com/';
     try {
-        const response = await fetch(corsProxy + url);
+        const response = await fetch(url);
         
         if (!response.ok) {
             throw new Error('Error al descargar el CSV');
